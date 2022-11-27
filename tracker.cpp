@@ -373,7 +373,7 @@ void process_command_and_send_reply(char* buffer, int client_fd){
         if(group_join_requests.find(group_name) == group_join_requests.end()){
             response = "Group does not exist";
         }
-        {
+       	else{
             if(groups[group_name] != tokens[3]){
                 response = "You are not the owner of this group";
             }
@@ -615,9 +615,9 @@ int main(int argc, char *argv[]){
         display_help();
     thread(get_quit).detach();
     string socket = read_tracker_info(argv[1], atoi(argv[2]));
-    vector<string> ip_port_pair = get_ip_port(socket); 
-    log_file_name = "tracker_" + ip_port_pair[0] + ":" + ip_port_pair[1] + ".log";
-    cout << "##############################################" << endl;  
+   	vector<string> ip_port_pair = get_ip_port(socket); 
+   	log_file_name = "tracker_" + ip_port_pair[0] + ":" + ip_port_pair[1] + ".log";
+   	cout << "##############################################" << endl;  
     cout << "TRACKER DETAILS" << endl;
     cout << "##############################################" << endl;  
     cout << "IP: " << ip_port_pair[0] << endl;
